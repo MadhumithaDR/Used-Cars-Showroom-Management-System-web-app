@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Set a light background color */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: left;
+            z-index: 2;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            padding: 10px 15px;
+        }
+
+        header a:hover {
+            border-bottom: 2px solid white;
+        }
+
+        .content {
+            padding: 50px;
+            text-align: center;
+            margin-top: 100px; /* Add space between header and content */
+        }
+
+        h1 {
+            font-size: 43px;
+        }
+
+        .car-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .car-card {
+            width: 300px;
+            background-color: white;
+            border-radius: 5px;
+            margin: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-image {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .car-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .car-details {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .car-price {
+            color: #2980b9;
+            font-size: 18px;
+        }
+
+        .search-form {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .dropdown-item:hover {
+            background-color: #ddd;
+        }
+
+        .search-input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .search-button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </style>
+    <title>Buy a Car - Used Cars Showroom</title>
+</head>
+<body>
+    <header>
+        <a href="home.html">Home</a>
+        <a href="buy%20a%20car.html">Buy a Car</a>
+        <a href="sell%20a%20car.html">Sell a Car</a>
+    </header>
+
+    <div class="content">
+        <h1>USED CARS SHOWROOM</h1>
+        <h2>Buy a Car</h2>
+        <h3>Explore all available cars</h3>
+
+        <div class="car-list">
+            <!-- Car Card 1 -->
+            <div class="car-card">
+                <img src="fordimg.jpg" alt="Car 1" class="car-image">
+                <div class="car-title">Ford Ecosport Titanium</div>
+                <div class="car-details">
+                    <p class="car-brand">Brand: Ford</p>
+                    <p class="car-year">Year: 2019</p>
+                    <p class="car-price">Price: 8.92 Lakh</p>
+                </div>
+                <a href="car-details.html?brand=Ford&model=Ecosport%20Titanium&year=2019&price=8.92%20Lakh&image=C:\xampp\htdocs\used-cars\used-cars\fordimg.jpg" class="option-button">View Details</a>
+            </div>
+
+            <!-- Car Card 2 -->
+            <div class="car-card">
+                <img src="MGhectorImg.jpg" alt="Car 2" class="car-image">
+                <div class="car-title">MG Hector Plus Sharp Hybrid</div>
+                <div class="car-details">
+                    <p class="car-brand">Brand: MG Hector</p>
+                    <p class="car-year">Year: 2020</p>
+                    <p class="car-price">Price: 19.40 Lakh</p>
+                </div>
+                <a href="car-details.html?brand=MG Hector&model=Plus%20Sharp%20Hybrid&year=2020&price=19.40%20Lakh&image=C:\xampp\htdocs\used-cars\used-cars\MGhectorImg.jpg" class="option-button">View Details</a>
+            </div>
+
+            <!-- Add more car cards as needed -->
+        </div>
+
+        <h3>Search for cars by category</h3>
+
+        <!-- Search form for cars by category -->
+        <form class="search-form" action="/search" method="get">
+            <div class="dropdown">
+                <label for="brand" style="font-size: 18px;">Brand:</label>
+                <input type="text" id="brand" name="brand" class="search-input" placeholder="Select brand">
+                <i class="fa fa-caret-down" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"></i>
+                <div class="dropdown-content">
+                    <div class="dropdown-item" onclick="selectDropdownItem('brand', 'Ford')">Ford</div>
+                    <div class="dropdown-item" onclick="selectDropdownItem('brand', 'MG Hector')">MG Hector</div>
+                    <!-- Add more brands as needed -->
+                    <div class="dropdown-item" onclick="selectDropdownItem('brand', 'View All Brands')">View All Brands</div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <label for="budget" style="font-size: 18px;">Budget:</label>
+                <input type="number" id="budget" name="budget" class="search-input" placeholder="Select budget">
+                <i class="fa fa-caret-down" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"></i>
+                <div class="dropdown-content">
+                    <div class="dropdown-item" onclick="selectDropdownItem('budget', '5')">5 Lakh</div>
+                    <div class="dropdown-item" onclick="selectDropdownItem('budget', '10')">10 Lakh</div>
+                    <!-- Add more budget ranges as needed -->
+                    <div class="dropdown-item" onclick="selectDropdownItem('budget', 'View All Budgets')">View All Budgets</div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <label for="year" style="font-size: 18px;">Year:</label>
+                <input type="number" id="year" name="year" class="search-input" placeholder="Select year">
+                <i class="fa fa-caret-down" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);"></i>
+                <div class="dropdown-content">
+                    <div class="dropdown-item" onclick="selectDropdownItem('year', '2019')">2019</div>
+                    <div class="dropdown-item" onclick="selectDropdownItem('year', '2020')">2020</div>
+                    <!-- Add more years as needed -->
+                    <div class="dropdown-item" onclick="selectDropdownItem('year', 'View All Years')">View All Years</div>
+                </div>
+            </div>
+
+            <button type="button" onclick="filterCars()" class="search-button">Search</button>
+        </form>
+
+        <script>
+            function selectDropdownItem(inputId, value) {
+                document.getElementById(inputId).value = value;
+            }
+
+           function filterCars() {
+        // Get user input values
+        var brand = document.getElementById("brand").value.toLowerCase();
+        var budget = parseFloat(document.getElementById("budget").value);
+        var year = parseInt(document.getElementById("year").value);
+
+        // Get all car cards
+        var carCards = document.getElementsByClassName("car-card");
+
+        // If all search fields are empty, display all cars
+        if (!brand && isNaN(budget) && isNaN(year)) {
+            for (var i = 0; i < carCards.length; i++) {
+                carCards[i].style.display = "block";
+            }
+            return;
+        }
+
+        // Loop through each car card to check conditions
+        for (var i = 0; i < carCards.length; i++) {
+            var carCard = carCards[i];
+            var carBrand = carCard.querySelector(".car-brand").textContent.toLowerCase();
+            var carPrice = parseFloat(carCard.querySelector(".car-price").textContent.replace("Price: ", "").replace(" Lakh", ""));
+            var carYear = parseInt(carCard.querySelector(".car-year").textContent.replace("Year: ", ""));
+
+            // Check conditions and hide/show car cards accordingly
+            if ((brand && carBrand.includes(brand)) ||
+                (budget && carPrice <= budget) ||
+                (year && carYear == year)) {
+                carCard.style.display = "block";
+            } else {
+                carCard.style.display = "none";
+            }
+        }
+    }
+        </script>
+    </div>
+</body>
+</html>

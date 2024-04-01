@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Set a light background color */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: left;
+            z-index: 2;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            padding: 10px 15px;
+        }
+
+        header a:hover {
+            border-bottom: 2px solid white;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+            margin-top: 100px; /* Add space between header and content */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 43px;
+            margin-bottom: 20px;
+        }
+
+        .sell-form {
+            text-align: left;
+        }
+
+        .sell-form label {
+            font-size: 18px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .search-button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Sell Your Car - Used Cars Showroom</title>
+</head>
+<body>
+    <header>
+        <a href="home.html">Home</a>
+        <a href="buy%20a%20car.html">Buy a Car</a>
+       <a href="sell%20a%20car.html">Sell a Car</a>
+    </header>
+
+    <div class="content">
+        <h1>USED CARS SHOWROOM</h1>
+        <h2>Sell Your Car</h2>
+        <h3>List your car for sale</h3>
+
+        <!-- Form for selling a car -->
+        <form class="sell-form" action="/sell" method="post">
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" class="search-input" placeholder="Enter brand" required>
+
+            <label for="year">Manufacturing Year:</label>
+            <input type="number" id="year" name="year" class="search-input" placeholder="Enter manufacturing year" required>
+
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" class="search-input" placeholder="Enter model" required>
+
+            <label for="fuel">Fuel Type:</label>
+            <select id="fuel" name="fuel" class="search-input" required>
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+                <option value="electric">Electric</option>
+            </select>
+
+            <label for="variant">Variant:</label>
+            <input type="text" id="variant" name="variant" class="search-input" placeholder="Enter variant" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" class="search-input" placeholder="Enter state" required>
+
+            <label for="rto">RTO Code:</label>
+            <input type="text" id="rto" name="rto" class="search-input" placeholder="Enter RTO code" required>
+
+            <label for="kms">Kilometers Driven:</label>
+            <input type="number" id="kms" name="kms" class="search-input" placeholder="Enter kilometers driven" required>
+
+            <label for="location">Car Location:</label>
+            <input type="text" id="location" name="location" class="search-input" placeholder="Enter car location" required>
+
+            <label for="sellDate">Planned Selling Date:</label>
+            <input type="date" id="sellDate" name="sellDate" class="search-input">
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" class="search-input" placeholder="Enter mobile number" required>
+
+            <button type="submit" class="search-button">List Your Car</button>
+        </form>
+    </div>
+</body>
+</html>

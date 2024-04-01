@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: auto; /* Enable body scroll */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: left;
+            z-index: 2;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            padding: 10px 15px;
+        }
+
+        header a:hover {
+            border-bottom: 2px solid white;
+        }
+
+        .car-details-container {
+            display: flex;
+            flex-direction: column;
+            background-color: #f2f2f2;
+            overflow-y: auto;
+            margin-top: 80px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .car-details-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #carDetailImage {
+            width: 400px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .car-details-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .car-details-info p {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .car-details-info h2 {
+            color: #2980b9;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .car-details-info a {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .car-details-info .overview {
+            margin-top: 20px;
+        }
+
+        #bookTestDriveButton {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+    <title>Car Details</title>
+</head>
+
+<body>
+    <header>
+<a href="home.html">Home</a>
+<a href="buy%20a%20car.html">Buy a Car</a>
+<a href="sell%20a%20car.html">Sell a Car</a>
+    </header>
+
+    <div class="car-details-container">
+        <div class="car-details-header">
+            <img src="" alt="Car Image" id="carDetailImage">
+            <div class="car-details-info">
+                <h2 id="carDetailTitle">Car Name</h2>
+                <p id="carDetailBrand">Brand: </p>
+                <p id="carDetailYear">Year: </p>
+                <p id="carDetailPrice">Price: </p>
+            </div>
+        </div>
+        
+        <div class="car-details-info overview" id="carDetailsOverview">
+            <!-- Other car details will be dynamically added here -->
+        </div>
+
+        <button id="bookTestDriveButton" onclick="bookTestDrive()">Book Test Drive</button>
+    </div>
+
+    <script>
+        // Fetch the car details from the URL or any other source
+        var urlParams = new URLSearchParams(window.location.search);
+        var carBrand = urlParams.get('brand');
+        var carModel = urlParams.get('model');
+        var carYear = urlParams.get('year');
+        var carPrice = urlParams.get('price');
+        var carImage = urlParams.get('image');
+
+        // Combine brand and model to get the full car name
+        var fullCarName = carBrand + ' ' + carModel;
+
+        // Update the content on the page
+        document.getElementById('carDetailImage').src = carImage;
+        document.getElementById('carDetailTitle').innerText = fullCarName;
+        document.getElementById('carDetailBrand').innerText = 'Brand: ' + carBrand;
+        document.getElementById('carDetailYear').innerText = 'Year: ' + carYear;
+        document.getElementById('carDetailPrice').innerText = 'Price: ' + carPrice;
+
+        // Additional details specific to the car
+        var carDetails = [
+            'Fuel Type: Petrol',
+            'RTO Code: ' + urlParams.get('rtoCode'),
+            'Kilometers Driven: ' + urlParams.get('kilometersDriven') + ' km',
+            'Parked Location: ' + urlParams.get('parkedLocation'),
+            'Home Test Drive: ' + (urlParams.get('homeTestDrive') === 'true' ? 'Available' : 'Not Available'),
+            'View Inspection Report: <a href="' + urlParams.get('inspectionReportLink') + '">Click Here</a>',
+            'Get Service History: <a href="' + urlParams.get('serviceHistoryLink') + '">Click Here</a>',
+            'Transmission Type: ' + urlParams.get('transmissionType'),
+            'Registration Number: ' + urlParams.get('registrationNumber'),
+            'Insurance: Valid till ' + urlParams.get('insuranceValidity')
+        ];
+
+        // Dynamically add car details to the overview section
+        var carDetailsOverview = document.getElementById('carDetailsOverview');
+        carDetails.forEach(function (detail) {
+            var detailElement = document.createElement('p');
+            detailElement.innerHTML = detail;
+            carDetailsOverview.appendChild(detailElement);
+        });
+
+        // Function to handle the "Book Test Drive" button click
+        function bookTestDrive() {
+            // Add your logic for handling the test drive booking
+            alert('Test Drive Booked!'); // For demonstration purposes, showing an alert
+        }
+    </script>
+</body>
+
+</html>
